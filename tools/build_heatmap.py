@@ -6,37 +6,14 @@ Run from the repo root:  python3 tools/build_heatmap.py [username]
 """
 import datetime as dt
 import html
-import re
 import sys
-import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_assets import OUT, SAGE, TEAL, LAVENDER, SLATE, SERIF, SANS  # noqa: E402
+from github_data import contributions  # noqa: E402
 
 USER = sys.argv[1] if len(sys.argv) > 1 else "ragnaykja"
-
-
-def fetch(user):
-    req = urllib.request.Request(f"https://github.com/users/{user}/contributions",
-                                 headers={"User-Agent": "profile-heatmap"})
-    page = urllib.request.urlopen(req, timeout=30).read().decode("utf-8")
-    counts = {}
-    for m in re.finditer(r'<tool-tip[^>]*for="(contribution-day-component-[\d-]+)"[^>]*>([^<]*)</tool-tip>', page):
-        n = re.match(r"\s*([\d,]+) contribution", m.group(2))
-        counts[m.group(1)] = int(n.group(1).replace(",", "")) if n else 0
-    days = []
-    for m in re.finditer(r"<td[^>]*ContributionCalendar-day[^>]*>", page):
-        tag = m.group(0)
-        date = re.search(r'data-date="([\d-]+)"', tag)
-        level = re.search(r'data-level="(\d)"', tag)
-        cid = re.search(r'id="([^"]+)"', tag)
-        if date and level:
-            days.append((dt.date.fromisoformat(date.group(1)), int(level.group(1)),
-                         counts.get(cid.group(1), 0) if cid else 0))
-    if not days:
-        raise SystemExit("no contribution data found – page layout may have changed")
-    return sorted(days)
 
 
 def render(days):
@@ -93,7 +70,7 @@ def render(days):
 
 
 if __name__ == "__main__":
-    days = fetch(USER)
+    days = contributions(USER)
     svg = render(days)
     (OUT / "heatmap.svg").write_text(svg, encoding="utf-8")
     print(f"  heatmap.svg  {len(days)} days, {len(svg) / 1024:.1f} KB")

@@ -1,4 +1,4 @@
-name: tracks in the snow
+name: refresh profile
 
 on:
   schedule:
@@ -9,17 +9,21 @@ permissions:
   contents: write
 
 jobs:
-  heatmap:
+  refresh:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Render heatmap
-        run: python3 tools/build_heatmap.py ${{ github.repository_owner }}
+      - name: Rebuild assets (hero stats, trail map, heatmap)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 tools/build_assets.py ${{ github.repository_owner }}
+          python3 tools/build_heatmap.py ${{ github.repository_owner }}
       - name: Commit if changed
         run: |
-          git diff --quiet assets/heatmap.svg && exit 0
+          git diff --quiet assets/ && exit 0
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/heatmap.svg
-          git commit -m "Update heatmap"
+          git add assets/
+          git commit -m "Refresh profile assets"
           git push

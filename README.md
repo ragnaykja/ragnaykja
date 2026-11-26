@@ -19,7 +19,9 @@ and small modules that make game nights run a little smoother.
 
 <img src="./assets/chapter-2.svg" alt="II – the trail: things I've built" width="100%" />
 
-*A few things I've left along the way.*
+<img src="./assets/trailmap.svg" alt="My projects as a trail map: one path per language, all leading back to the den" width="100%" />
+
+*A few things I've left along the way:*
 
 **[PropSync](https://github.com/ragnaykja/propsync)** &nbsp;<sub>Obsidian plugin · TypeScript</sub><br>
 Keeps note properties in sync across a group – fills in what's missing, never overwrites what's there.
