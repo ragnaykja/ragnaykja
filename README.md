@@ -46,3 +46,7 @@ One small job: hide the bars you don't need.
 <br><br>
 
 <img src="./assets/footer.svg" alt="Build things. Break things. Learn why they broke." width="100%" />
+
+<p align="center">
+  <img src="https://komarev.com/ghpvc/?username=ragnaykja&label=lone%20wolves%20were%20here&color=8592ad&style=flat-square" alt="lone wolves were here – profile view counter" />
+</p>

@@ -49,3 +49,15 @@ def contributions(user):
     if not days:
         raise SystemExit("no contribution data found – page layout may have changed")
     return sorted(days)
+
+
+def downloads(user, repo_list):
+    """Release downloads across all repos. Manifest files (module.json /
+    manifest.json) are skipped: Foundry and Obsidian fetch them on every
+    update check, so only real packages (zip, main.js, …) are counted."""
+    total = 0
+    for r in repo_list:
+        rels = json.loads(_get(f"https://api.github.com/repos/{user}/{r['name']}/releases?per_page=100", api=True))
+        total += sum(a["download_count"] for rel in rels for a in rel.get("assets", [])
+                     if not a["name"].lower().endswith(".json"))
+    return total

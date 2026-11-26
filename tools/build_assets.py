@@ -170,7 +170,7 @@ def hero(stats):
     tracks = trail(f, 22, lambda l: 30 - 24 * l, SNOW_SH, .9, t0=.1, ease=1.6,
                    stride=lambda l: 13 - 10 * l, fade=lambda l: 1 - .45 * l)
     cols = [(str(stats["projects"]), "projects"), (str(stats["contributions"]), "contributions this year"),
-            (str(stats["languages"]), "languages"), (str(stats["since"]), "on github since")]
+            (f"{stats['downloads']:,}", "downloads"), (str(stats["since"]), "on github since")]
     stat_svg, x = [], 76
     for num, label in cols:
         stat_svg.append(f'<text x="{x}" y="312" class="serif" font-size="34" fill="{INK}">{escape(num)}</text>'
@@ -198,36 +198,8 @@ def hero(stats):
     write("hero.svg", svg(W, H, body, defs, css, "Ragna – developer, GIS, automation"))
 
 
-def poly_trail(points, size, step, color, offset=3.5, base_op=.55, wave=None):
-    """Wolf prints walking along a polyline. `wave` = (delay0, delay_step) adds a
-    soft brightening that travels along the trail like someone walking it."""
-    segs, total = [], 0.0
-    for (x1, y1), (x2, y2) in zip(points, points[1:]):
-        L = math.hypot(x2 - x1, y2 - y1)
-        segs.append((x1, y1, x2, y2, L, total))
-        total += L
-    out, k, d = [], 0, step / 2
-    while d < total - step / 3:
-        for x1, y1, x2, y2, L, s0 in segs:
-            if s0 <= d <= s0 + L:
-                u = (d - s0) / L
-                x, y = x1 + (x2 - x1) * u, y1 + (y2 - y1) * u
-                ang = math.atan2(y2 - y1, x2 - x1)
-                break
-        side = offset * (1 if k % 2 else -1)
-        px, py = x - math.sin(ang) * side, y + math.cos(ang) * side
-        anim = ""
-        if wave:
-            anim = f' class="wk" style="animation-delay:{wave[0] + k * wave[1]:.2f}s"'
-        out.append(f'<use href="#paw"{anim} x="{px - size / 2:.1f}" y="{py - size / 2:.1f}" width="{size}" height="{size}" '
-                   f'transform="rotate({math.degrees(ang) + 90:.1f} {px:.1f} {py:.1f})" opacity="{base_op}"/>')
-        d += step
-        k += 1
-    return f'<g fill="{color}">{"".join(out)}</g>', k
-
-
 # ── trail map: every path is a language, every stop a project ────────
-TRAIL_COLORS = {"TypeScript": "#8798dc", "JavaScript": "#c9a865", "Python": "#6fb89c",
+TRAIL_COLORS = {"TypeScript": "#7f9be0", "JavaScript": "#d4b45c", "Python": "#6fb89c",
                 "Rust": "#d0977a", "Go": "#6cb8c8", "Shell": "#9fb07a", "CSS": "#b08ad8", "HTML": "#d98b8b"}
 FALLBACK_COLORS = ["#a08ad6", "#d08aa8", "#5fb3b3", "#c9a26b"]
 
@@ -238,43 +210,52 @@ def trailmap(repos):
         groups.setdefault(r["language"] or "Other", []).append(r)
     langs = sorted(groups, key=lambda l: (-len(groups[l]), l))
     n = len(langs)
-    W, gap, top = 1200, 100, 64
-    H = top + (n - 1) * gap + 104
+    W = 1200
+    gap = 96
+    top = 70
+    H = top + (n - 1) * gap + 110
     DX, DY = 1080, top + (n - 1) * gap / 2 + 8        # the den
-    trails, stops, labels = [], [], []
+    paths, stops, labels, walkers = [], [], [], []
     for i, lang in enumerate(langs):
         color = TRAIL_COLORS.get(lang) or FALLBACK_COLORS[i % len(FALLBACK_COLORS)]
         y = top + i * gap
-        ey = DY + (i - (n - 1) / 2) * 14
-        bend = DX - 80 - abs(y - ey)
-        pts = [(190, y), (bend, y), (DX - 80, ey), (DX - 44, ey)]
-        g, _ = poly_trail(pts, 26, 34, color, offset=4, base_op=.55, wave=(1 + i * .7, .12))
-        trails.append(g)
-        labels.append(f'<text x="20" y="{y + 5}" class="sans" font-size="13" font-weight="600" letter-spacing="2" fill="{color}">{escape(lang.upper())}</text>')
+        ey = DY + (i - (n - 1) / 2) * 9
+        bend = DX - 70 - abs(y - ey)
+        d = f"M190 {y} H{bend:.0f} L{DX - 70} {ey:.0f} H{DX - 34}"
+        pid = f"t{i}"
+        paths.append(f'<path id="{pid}" class="draw" style="animation-delay:{i * .25:.2f}s" d="{d}" pathLength="1" '
+                     f'fill="none" stroke="{color}" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>')
+        labels.append(f'<rect x="20" y="{y - 15}" width="150" height="30" rx="15" fill="{color}" fill-opacity=".16" stroke="{color}" stroke-opacity=".55"/>'
+                      f'<circle cx="40" cy="{y}" r="5" fill="{color}"/>'
+                      f'<text x="54" y="{y + 5}" class="sans" font-size="13" font-weight="600" letter-spacing="1.5" fill="{SLATE}">{escape(lang.upper())}</text>')
         items = groups[lang]
-        span = bend - 290
+        span = bend - 280
         for k, r in enumerate(items):
-            sx = 290 + span * (k + .5) / len(items)
+            sx = 280 + span * (k + .5) / len(items)
             above = k % 2 == 0
             name = r["name"] if len(r["name"]) <= 30 else r["name"][:29] + "…"
-            stops.append(f'<circle cx="{sx:.0f}" cy="{y}" r="10" fill="{color}" fill-opacity=".18"/>'
-                         f'<circle cx="{sx:.0f}" cy="{y}" r="5" fill="{color}"/>'
-                         f'<text x="{sx:.0f}" y="{y - 22 if above else y + 34}" text-anchor="middle" class="sans" font-size="15" fill="{SLATE}">{escape(name)}</text>')
+            stops.append(f'<circle class="pop" style="animation-delay:{.6 + i * .25 + k * .15:.2f}s;transform-origin:{sx:.0f}px {y}px" '
+                         f'cx="{sx:.0f}" cy="{y}" r="9" fill="#f4f6fb" stroke="{color}" stroke-width="4"/>'
+                         f'<text x="{sx:.0f}" y="{y - 20 if above else y + 32}" text-anchor="middle" class="sans" font-size="15" fill="{SLATE}">{escape(name)}</text>')
+        walkers.append(f'<circle r="4.5" fill="#f4f6fb" stroke="{color}" stroke-width="2" opacity=".95">'
+                       f'<animateMotion dur="{9 + i * 2}s" begin="{2 + i}s" repeatCount="indefinite" rotate="auto"><mpath href="#{pid}"/></animateMotion></circle>')
     import base64
     av = base64.b64encode((Path(__file__).resolve().parent / "avatar.jpg").read_bytes()).decode()
     defs = f'<clipPath id="den"><circle cx="{DX}" cy="{DY}" r="34"/></clipPath>'
     css = '''
-.wk{animation:wk 9s ease-in-out infinite}@keyframes wk{0%%{opacity:.5}4%%{opacity:1}14%%,100%%{opacity:.5}}
-.ring{animation:ring 3.6s ease-out infinite;transform-origin:%dpx %dpx}@keyframes ring{0%%{opacity:.5;transform:scale(1)}100%%{opacity:0;transform:scale(1.6)}}
-@media (prefers-reduced-motion:reduce){.wk,.ring{animation:none}}''' % (DX, DY)
-    body = f'''{"".join(trails)}
-<circle class="ring" cx="{DX}" cy="{DY}" r="40" fill="none" stroke="{SLATE}" stroke-width="1.2"/>
-<circle cx="{DX}" cy="{DY}" r="39" fill="none" stroke="{SLATE}" stroke-opacity=".5" stroke-width="1.5"/>
+.draw{animation:draw 1.6s ease-out backwards}@keyframes draw{from{stroke-dasharray:1;stroke-dashoffset:1}to{stroke-dasharray:1;stroke-dashoffset:0}}
+.pop{animation:pop .5s ease-out backwards}@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.ring{animation:ring 3.2s ease-out infinite;transform-origin:%dpx %dpx}@keyframes ring{0%%{opacity:.6;transform:scale(1)}100%%{opacity:0;transform:scale(1.7)}}
+@media (prefers-reduced-motion:reduce){.draw,.pop,.ring{animation:none}}''' % (DX, DY)
+    body = f'''{"".join(paths)}
+<circle class="ring" cx="{DX}" cy="{DY}" r="40" fill="none" stroke="{SLATE}" stroke-width="1.5"/>
+<circle cx="{DX}" cy="{DY}" r="40" fill="#f4f6fb" stroke="{SLATE}" stroke-opacity=".6" stroke-width="2"/>
 <image clip-path="url(#den)" x="{DX - 34}" y="{DY - 34}" width="68" height="68" href="data:image/jpeg;base64,{av}"/>
-<text x="{DX}" y="{DY + 64}" text-anchor="middle" class="serif" font-size="17" font-style="italic" fill="{SLATE}">the den</text>
+<text x="{DX}" y="{DY + 66}" text-anchor="middle" class="serif" font-size="17" font-style="italic" fill="{SLATE}">the den</text>
 {"".join(labels)}
 {"".join(stops)}
-<text x="20" y="{H - 12}" class="serif" font-size="16" font-style="italic" fill="{SLATE}">every path is a language, every stop a project.</text>'''
+{"".join(walkers)}
+<text x="20" y="{H - 14}" class="serif" font-size="16" font-style="italic" fill="{SLATE}">every path is a language, every stop a project.</text>'''
     write("trailmap.svg", svg(W, H, body, defs, css, "Projects as a trail map, one path per language"))
 
 
@@ -333,14 +314,14 @@ def footer():
 if __name__ == "__main__":
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    from github_data import contributions, profile, repos
+    from github_data import contributions, downloads, profile, repos
 
     user = sys.argv[1] if len(sys.argv) > 1 else "ragnaykja"
     rs = repos(user)
     stats = {
         "projects": len(rs),
         "contributions": sum(n for _, _, n in contributions(user)),
-        "languages": len({r["language"] for r in rs if r["language"]}),
+        "downloads": downloads(user, rs),
         "since": profile(user)["created_at"][:4],
     }
     print("building assets →", OUT, stats)
