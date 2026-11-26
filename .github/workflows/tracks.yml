@@ -22,8 +22,8 @@ jobs:
       - name: Commit if changed
         run: |
           git diff --quiet assets/ && exit 0
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "Ragna"
+          git config user.email "125876369+ragnaykja@users.noreply.github.com"
           git add assets/
           git commit -m "Refresh profile assets"
           git push
