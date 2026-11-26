@@ -8,12 +8,12 @@ Hi, I'm **Ragna** – a developer from Germany who likes the quiet kind of tools
 you set them up once, forget about them, and they just keep doing the work.
 
 Most of my trails lead somewhere between **automation**, **spatial data** and **tabletop games** –
-GIS pipelines on PostGIS and QGIS, self-hosted services on Linux and Docker,
-and small modules that make game nights run a little smoother.
+maps and spatial data in PostGIS and QGIS, plugins that tidy up my notes in Obsidian,
+and small modules that make game nights in Foundry VTT run a little smoother.
 
 > *If I have to do it twice, I'm going to automate it.*
 
-<sub>usually found with &nbsp;·&nbsp; TypeScript &nbsp;·&nbsp; Node.js &nbsp;·&nbsp; React &nbsp;·&nbsp; PostGIS &nbsp;·&nbsp; QGIS &nbsp;·&nbsp; Docker &nbsp;·&nbsp; Linux</sub>
+<sub>usually found with &nbsp;·&nbsp; TypeScript &nbsp;·&nbsp; JavaScript &nbsp;·&nbsp; Node.js &nbsp;·&nbsp; React &nbsp;·&nbsp; PostgreSQL / PostGIS &nbsp;·&nbsp; QGIS</sub>
 
 <br>
 
