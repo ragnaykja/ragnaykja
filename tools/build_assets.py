@@ -28,17 +28,12 @@ SERIF = "'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,s
 SANS = "-apple-system,BlinkMacSystemFont,'Segoe UI',Inter,Helvetica,Arial,sans-serif"
 BASE_CSS = f".serif{{font-family:{SERIF}}}.sans{{font-family:{SANS}}}"
 
-# Wolf track (front foot), pointing up: oval outline, two-lobed heel pad,
-# four toes – the inner pair forward and close together – with claw marks.
-PAW = ('<symbol id="paw" viewBox="-20 -20 40 40">'
-       '<path d="M-7.4 9.5 C-8.2 4.4 -4.6 2.4 -2 3.6 Q0 4.4 2 3.6 C4.6 2.4 8.2 4.4 7.4 9.5 '
-       'C6.9 14.4 4 16.4 1.8 15.2 Q0 14.2 -1.8 15.2 C-4 16.4 -6.9 14.4 -7.4 9.5Z"/>'
-       '<ellipse cx="-3.1" cy="-8.4" rx="2.8" ry="4.6" transform="rotate(-5 -3.1 -8.4)"/>'
-       '<ellipse cx="3.1" cy="-8.4" rx="2.8" ry="4.6" transform="rotate(5 3.1 -8.4)"/>'
-       '<ellipse cx="-8.2" cy="-2.2" rx="2.6" ry="3.9" transform="rotate(-20 -8.2 -2.2)"/>'
-       '<ellipse cx="8.2" cy="-2.2" rx="2.6" ry="3.9" transform="rotate(20 8.2 -2.2)"/>'
-       '<path d="M-4.2 -12.6 L-3.5 -16 L-2.5 -12.8Z M4.2 -12.6 L3.5 -16 L2.5 -12.8Z '
-       'M-10.4 -5.4 L-11 -8.6 L-8.9 -6.1Z M10.4 -5.4 L11 -8.6 L8.9 -6.1Z"/></symbol>')
+# Paw print, pointing up: soft triangular heel pad and four egg-shaped toes in an arc.
+PAW = ('<symbol id="paw" viewBox="-20 -20 40 40"><path filter="url(#rough)" d="M0 0.6 C2.6 0.6 5.2 3.4 8.4 7.6 C11.4 11.4 11.6 15.6 8.2 16.8 C5.6 17.7 3.2 15.9 0 15.9 C-3.2 15.9 -5.6 17.7 -8.2 16.8 C-11.6 15.6 -11.4 11.4 -8.4 7.6 C-5.2 3.4 -2.6 0.6 0 0.6Z M-9.53 -5.00 L-9.06 -3.69 L-8.79 -2.34 L-8.70 -1.07 L-8.77 0.01 L-9.02 0.85 L-9.46 1.42 L-10.12 1.71 L-10.99 1.75 L-12.06 1.56 L-13.27 1.16 L-14.51 0.57 L-15.67 -0.20 L-16.38 -1.32 L-16.83 -2.53 L-16.99 -3.74 L-16.86 -4.88 L-16.43 -5.86 L-15.74 -6.62 L-14.84 -7.10 L-13.78 -7.28 L-12.65 -7.14 L-11.51 -6.69 L-10.44 -5.96Z M-0.89 -11.27 L-1.06 -9.76 L-1.43 -8.30 L-1.93 -7.00 L-2.51 -5.97 L-3.14 -5.27 L-3.84 -4.92 L-4.61 -4.95 L-5.48 -5.34 L-6.42 -6.05 L-7.41 -7.03 L-8.34 -8.21 L-9.11 -9.53 L-9.27 -10.97 L-9.14 -12.38 L-8.73 -13.66 L-8.06 -14.71 L-7.19 -15.46 L-6.16 -15.88 L-5.06 -15.92 L-3.95 -15.58 L-2.92 -14.89 L-2.02 -13.90 L-1.33 -12.66Z M9.11 -9.53 L8.34 -8.21 L7.41 -7.03 L6.42 -6.05 L5.48 -5.34 L4.61 -4.95 L3.84 -4.92 L3.14 -5.27 L2.51 -5.97 L1.93 -7.00 L1.43 -8.30 L1.06 -9.76 L0.89 -11.27 L1.33 -12.66 L2.02 -13.90 L2.92 -14.89 L3.95 -15.58 L5.06 -15.92 L6.16 -15.88 L7.19 -15.46 L8.06 -14.71 L8.73 -13.66 L9.14 -12.38 L9.27 -10.97Z M15.67 -0.20 L14.51 0.57 L13.27 1.16 L12.06 1.56 L10.99 1.75 L10.12 1.71 L9.46 1.42 L9.02 0.85 L8.77 0.01 L8.70 -1.07 L8.79 -2.34 L9.06 -3.69 L9.53 -5.00 L10.44 -5.96 L11.51 -6.69 L12.65 -7.14 L13.78 -7.28 L14.84 -7.10 L15.74 -6.62 L16.43 -5.86 L16.86 -4.88 L16.99 -3.74 L16.83 -2.53 L16.38 -1.32Z"/></symbol>')
+
+ROUGH = ('<filter id="rough" x="-10%" y="-10%" width="120%" height="120%">'
+         '<feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="4"/>'
+         '<feDisplacementMap in="SourceGraphic" scale="1.1"/></filter>')
 
 # Sitting wolf, head raised towards the sky, facing left. Box 0..100.
 WOLF = ('<symbol id="wolf" viewBox="0 0 100 100"><path d="'
@@ -57,7 +52,7 @@ ANIM = '''
 
 def svg(w, h, body, defs="", css="", label=""):
     return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w} {h}" width="{w}" height="{h}" '
-            f'role="img" aria-label="{escape(label)}"><defs>{PAW}{WOLF}{defs}</defs>'
+            f'role="img" aria-label="{escape(label)}"><defs>{ROUGH}{PAW}{WOLF}{defs}</defs>'
             f'<style>{BASE_CSS}{ANIM}{css}</style>{body}</svg>')
 
 
@@ -148,6 +143,9 @@ def portrait(cx, cy, r):
 def hero(stats):
     W, H = 1200, 480
     CX, CY, R = 905, 205, 168
+    BAND = 110
+    import base64
+    av = base64.b64encode((Path(__file__).resolve().parent / "avatar.jpg").read_bytes()).decode()
     rnd = random.Random(7)
     v1d, v1 = veil("v1", 380, 20, 900, 200, [SAGE, TEAL, LAVENDER], 30, .38, "veil")
     v2d, v2 = veil("v2", 300, 80, 700, 120, [LAVENDER, ROSE], 34, .2, "veil2")
@@ -155,7 +153,10 @@ def hero(stats):
 <clipPath id="frame"><rect width="{W}" height="{H}" rx="18"/></clipPath>
 <clipPath id="moon"><circle cx="{CX}" cy="{CY}" r="{R}"/></clipPath>
 <radialGradient id="halo" cx=".5" cy=".5" r=".5"><stop offset=".55" stop-color="{LAVENDER}" stop-opacity=".16"/><stop offset="1" stop-color="{LAVENDER}" stop-opacity="0"/></radialGradient>
-<linearGradient id="scan" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{SAGE}" stop-opacity="0"/><stop offset=".5" stop-color="{SAGE}" stop-opacity=".14"/><stop offset="1" stop-color="{SAGE}" stop-opacity="0"/></linearGradient>
+<linearGradient id="bW" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000"/><stop offset=".3" stop-color="#fff"/><stop offset=".7" stop-color="#fff"/><stop offset="1" stop-color="#000"/></linearGradient>
+<linearGradient id="bB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".3" stop-color="#000"/><stop offset=".7" stop-color="#000"/><stop offset="1" stop-color="#fff"/></linearGradient>
+<mask id="mImg" maskUnits="userSpaceOnUse" x="{CX - R}" y="{CY - R}" width="{2 * R}" height="{2 * R}"><rect x="{CX - R}" y="{CY - R}" width="{2 * R}" height="{2 * R}" fill="#fff"/><rect class="band" x="{CX - R}" y="{CY - R - BAND}" width="{2 * R}" height="{BAND}" fill="url(#bB)"/></mask>
+<mask id="mAsc" maskUnits="userSpaceOnUse" x="{CX - R}" y="{CY - R}" width="{2 * R}" height="{2 * R}"><rect class="band" x="{CX - R}" y="{CY - R - BAND}" width="{2 * R}" height="{BAND}" fill="url(#bW)"/></mask>
 <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
 <stop offset="0" stop-color="{NIGHT0}"/><stop offset=".45" stop-color="{NIGHT1}"/>
 <stop offset=".72" stop-color="{NIGHT2}"/><stop offset="1" stop-color="{DUSK}"/></linearGradient>
@@ -163,9 +164,9 @@ def hero(stats):
 <linearGradient id="snow2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9b5cd"/><stop offset="1" stop-color="#8794b2"/></linearGradient>'''
     css = f'''
 .ascii{{animation:breathe 7s ease-in-out infinite}}@keyframes breathe{{0%,100%{{opacity:.95}}50%{{opacity:.78}}}}
-.scanbar{{animation:scan 9s ease-in-out infinite}}@keyframes scan{{0%{{transform:translateY(-60px);opacity:0}}10%{{opacity:1}}55%{{opacity:1}}70%,100%{{transform:translateY({2 * R + 40}px);opacity:0}}}}
+.band{{animation:band 12s ease-in-out infinite}}@keyframes band{{0%,15%{{transform:translateY(0)}}70%,100%{{transform:translateY({2 * R + BAND}px)}}}}
 .orbit{{transform-origin:{CX}px {CY}px;animation:orbit 60s linear infinite}}@keyframes orbit{{to{{transform:rotate(360deg)}}}}
-@media (prefers-reduced-motion:reduce){{.ascii,.scanbar,.orbit{{animation:none}}}}'''
+@media (prefers-reduced-motion:reduce){{.ascii,.band,.orbit{{animation:none}}}}'''
     f = bezier((30, 530), (380, 420), (700, 400), (905, 366))
     tracks = trail(f, 22, lambda l: 30 - 24 * l, SNOW_SH, .9, t0=.1, ease=1.6,
                    stride=lambda l: 13 - 10 * l, fade=lambda l: 1 - .45 * l)
@@ -182,7 +183,11 @@ def hero(stats):
 {v2}{v1}
 <circle cx="{CX}" cy="{CY}" r="{R + 46}" fill="url(#halo)"/>
 <circle cx="{CX}" cy="{CY}" r="{R + 2}" fill="{NIGHT0}" opacity=".7"/>
-<g clip-path="url(#moon)">{portrait(CX, CY, R)}<rect class="scanbar" x="{CX - R}" y="{CY - R - 30}" width="{2 * R}" height="60" fill="url(#scan)"/></g>
+<g clip-path="url(#moon)">
+<image mask="url(#mImg)" x="{CX - R}" y="{CY - R}" width="{2 * R}" height="{2 * R}" href="data:image/jpeg;base64,{av}"/>
+<circle cx="{CX}" cy="{CY}" r="{R}" fill="{NIGHT1}" opacity=".16" mask="url(#mImg)"/>
+<g mask="url(#mAsc)"><rect x="{CX - R}" y="{CY - R}" width="{2 * R}" height="{2 * R}" fill="{NIGHT0}"/>{portrait(CX, CY, R)}</g>
+</g>
 <g class="orbit"><circle cx="{CX}" cy="{CY}" r="{R + 16}" fill="none" stroke="{MUTED}" stroke-opacity=".35" stroke-dasharray="2 7"/>
 <circle cx="{CX + R + 16}" cy="{CY}" r="3" fill="{SAGE}"/></g>
 <path d="M0 352 C140 328 260 348 420 336 S700 318 860 340 S1080 330 1200 344 L1200 {H} L0 {H}Z" fill="{HILL_FAR}" opacity=".92"/>
@@ -285,6 +290,25 @@ def chapter(num, title, sub, seed):
     write(f"chapter-{seed}.svg", svg(W, H, body, "", "", f"{num} – {title}"))
 
 
+# ── field notes: a few numbers from the walk ───────────────────────
+def fieldnotes(notes):
+    W, H = 1200, 150
+    cols = len(notes)
+    colw = W / cols
+    items = []
+    for i, (num, label, sub) in enumerate(notes):
+        x = i * colw + 6
+        items.append(f'<text x="{x:.0f}" y="84" class="serif" font-size="42" fill="{SLATE}">{escape(num)}</text>'
+                     f'<text x="{x + 2:.0f}" y="108" class="sans" font-size="12" letter-spacing="2.2" fill="{SLATE}">{escape(label.upper())}</text>'
+                     f'<text x="{x + 2:.0f}" y="130" class="serif" font-size="15" font-style="italic" fill="{SLATE}" opacity=".75">{escape(sub)}</text>')
+        if i:
+            items.append(f'<line x1="{i * colw - 22:.0f}" x2="{i * colw - 22:.0f}" y1="50" y2="128" stroke="{SLATE}" stroke-opacity=".25"/>')
+    body = f'''<text x="6" y="22" class="sans" font-size="12" letter-spacing="3" fill="{SLATE}">FIELD NOTES</text>
+<line x1="120" x2="{W - 6}" y1="18" y2="18" stroke="{SLATE}" stroke-opacity=".25" stroke-dasharray="2 6"/>
+{"".join(items)}'''
+    write("fieldnotes.svg", svg(W, H, body, "", "", "Field notes: " + ", ".join(f"{n} {l}" for n, l, _ in notes)))
+
+
 # ── footer: the trail ends at the wolf, under the aurora ──────────────
 def footer():
     W, H = 1200, 340
@@ -312,22 +336,53 @@ def footer():
 
 
 if __name__ == "__main__":
+    import datetime as dt
     import sys
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    from github_data import contributions, downloads, profile, repos
+    from github_data import contributions, profile, release_stats, repos
 
     user = sys.argv[1] if len(sys.argv) > 1 else "ragnaykja"
     rs = repos(user)
+    days = contributions(user)
+    rel = release_stats(user, rs)
+    total_dl = sum(d for _, d in rel.values())
     stats = {
         "projects": len(rs),
-        "contributions": sum(n for _, _, n in contributions(user)),
-        "downloads": downloads(user, rs),
+        "contributions": sum(n for _, _, n in days),
+        "downloads": total_dl,
         "since": profile(user)["created_at"][:4],
     }
+
+    # field notes
+    active = [d for d, lv, n in days if n]
+    streak = best = 0
+    prev = None
+    for d in active:
+        streak = streak + 1 if prev and (d - prev).days == 1 else 1
+        best, prev = max(best, streak), d
+    today = days[-1][0]
+    if active:
+        ago = (today - active[-1]).days
+        last = "today" if ago == 0 else "yesterday" if ago == 1 else f"{ago} days ago"
+    else:
+        last = "not yet"
+    top = max(rel.items(), key=lambda kv: kv[1][1]) if rel else None
+    star_count = sum(r["stargazers_count"] for r in rs)
+    notes = [
+        (str(sum(c for c, _ in rel.values())), "releases shipped", f"across {sum(1 for c, _ in rel.values() if c)} projects"),
+        (f"{top[1][1]:,}" if top else "0", "most downloaded", top[0] if top else "—"),
+        (str(len(active)), "days on the trail", "in the last year"),
+        (f"{best}", "longest streak", "day in a row" if best == 1 else "days in a row"),
+        (last.split()[0] if last[0].isdigit() else last, "last tracks",
+         " ".join(last.split()[1:]) + " · fresh snow" if last[0].isdigit() else "fresh snow"),
+    ]
+    if star_count:
+        notes.insert(1, (str(star_count), "stars", "thank you"))
     print("building assets →", OUT, stats)
     hero(stats)
     chapter("I", "the den", "who I am", 1)
     chapter("II", "the trail", "things I've built", 2)
     chapter("III", "tracks in the snow", "a year of commits", 3)
     trailmap(rs)
+    fieldnotes(notes)
     footer()

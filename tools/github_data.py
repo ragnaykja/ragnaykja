@@ -51,13 +51,17 @@ def contributions(user):
     return sorted(days)
 
 
-def downloads(user, repo_list):
-    """Release downloads across all repos. Manifest files (module.json /
-    manifest.json) are skipped: Foundry and Obsidian fetch them on every
-    update check, so only real packages (zip, main.js, …) are counted."""
-    total = 0
+def release_stats(user, repo_list):
+    """{repo: (release_count, package_downloads)}. Manifest files (module.json /
+    manifest.json) are skipped: Foundry and Obsidian fetch them on every update
+    check, so only real packages (zip, main.js, …) are counted as downloads."""
+    out = {}
     for r in repo_list:
         rels = json.loads(_get(f"https://api.github.com/repos/{user}/{r['name']}/releases?per_page=100", api=True))
-        total += sum(a["download_count"] for rel in rels for a in rel.get("assets", [])
-                     if not a["name"].lower().endswith(".json"))
-    return total
+        out[r["name"]] = (len(rels), sum(a["download_count"] for rel in rels for a in rel.get("assets", [])
+                                         if not a["name"].lower().endswith(".json")))
+    return out
+
+
+def downloads(user, repo_list):
+    return sum(d for _, d in release_stats(user, repo_list).values())

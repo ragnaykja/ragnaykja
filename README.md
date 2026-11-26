@@ -45,6 +45,10 @@ One small job: hide the bars you don't need.
 
 <br><br>
 
+<img src="./assets/fieldnotes.svg" alt="Field notes: releases shipped, most downloaded project, days on the trail, longest streak, last tracks" width="100%" />
+
+<br><br>
+
 <img src="./assets/footer.svg" alt="Build things. Break things. Learn why they broke." width="100%" />
 
 <p align="center">
