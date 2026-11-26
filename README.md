@@ -1,6 +1,6 @@
 <div align="center">
 
-# Hi, I'm Ragna 👋
+<img loading="lazy" decoding="async" width="100%" alt="Ragna animated Living Identity portrait and ASCII name" class="_readmeDocumentImage_1e818_1639 _readmeDocumentImageLoaded_1e818_1640" src="https://www.gitskins.com/api/section/hero?username=ragnaykja&amp;theme=aurora&amp;avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F125876369%3Fu%3D5186696e620ffb9741d89ab2bfd2ecdc20e966a6%26v%3D4&amp;variant=living-identity&amp;label=Ragna&amp;v=wow-living-identity-1&amp;mode=dark&amp;pv=BfAQPmanbwh83fNx">
 
 ### Developer · GIS · Automation · Open Source
 
