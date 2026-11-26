@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 28" width="800" height="28"><defs><symbol id="paw" viewBox="-16 -18 32 32"><ellipse cx="0" cy="5" rx="9" ry="7.5"/><ellipse cx="-10" cy="-4" rx="3.6" ry="4.6" transform="rotate(-20 -10 -4)"/><ellipse cx="-3.8" cy="-11" rx="3.6" ry="4.8"/><ellipse cx="3.8" cy="-11" rx="3.6" ry="4.8"/><ellipse cx="10" cy="-4" rx="3.6" ry="4.6" transform="rotate(20 10 -4)"/></symbol><linearGradient id="ag" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3ddc97"/><stop offset=".45" stop-color="#2dd4bf"/><stop offset=".75" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+<linearGradient id="l" x1="0" x2="1"><stop offset="0" stop-color="#3ddc97" stop-opacity="0"/><stop offset="1" stop-color="#2dd4bf"/></linearGradient>
+<linearGradient id="r" x1="0" x2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899" stop-opacity="0"/></linearGradient></defs>
+<line x1="40" y1="14" x2="352" y2="14" stroke="url(#l)" stroke-width="2" stroke-linecap="round"/>
+<line x1="448" y1="14" x2="760" y2="14" stroke="url(#r)" stroke-width="2" stroke-linecap="round"/>
+<use href="#paw" x="362" y="4" width="20" height="20" fill="#2dd4bf" transform="rotate(-15 372 14)"/>
+<use href="#paw" x="390" y="2" width="22" height="22" fill="#7c9cf6"/>
+<use href="#paw" x="418" y="4" width="20" height="20" fill="#8b5cf6" transform="rotate(15 428 14)"/></svg>

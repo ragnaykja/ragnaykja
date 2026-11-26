@@ -1,108 +1,115 @@
 <div align="center">
 
-### Developer · GIS · Automation · Open Source
-
-**Building things because doing it manually sucks.**
+<img src="./assets/header.svg" alt="Hi, I'm Ragna – Developer · GIS · Automation · Open Source" width="100%" />
 
 <br>
 
-`TypeScript` · `JavaScript` · `React` · `Node.js` · `PostgreSQL` · `PostGIS` · `Docker` · `Linux`
+<img src="https://img.shields.io/badge/species-spotted_canine-3ddc97?style=for-the-badge&labelColor=0b1330" />
+<img src="https://img.shields.io/badge/den-Germany-2dd4bf?style=for-the-badge&labelColor=0b1330" />
+<img src="https://img.shields.io/badge/fuel-coffee_%26_snacks-8b5cf6?style=for-the-badge&labelColor=0b1330" />
+
+**Building things because doing it manually sucks.** 🐾🌌
 
 </div>
 
-<br>
+<img src="./assets/divider.svg" width="100%" />
 
-## `> whoami`
+## `> sniff --whoami`
 
-I'm a developer from Germany with a passion for building tools that solve real problems.
+I'm a developer (and a furry 🐾) from Germany with a nose for tools that solve real problems.
 
-A lot of my work revolves around **automation**, **spatial data**, and turning repetitive workflows into software. When I'm not working with GIS and databases, I'm usually experimenting with self-hosted infrastructure or building tools for things I enjoy.
+A lot of my work revolves around **automation**, **spatial data**, and turning repetitive workflows into software. When I'm not digging through GIS layers and databases, I'm usually tinkering with self-hosted infrastructure or building tools for the things I enjoy – like rolling dice at the tabletop. 🎲
 
 | | |
 |---|---|
-| 📍 **GIS & Spatial Data** | PostgreSQL · PostGIS · QGIS |
-| ⚡ **Development** | TypeScript · React · Node.js |
-| 🐳 **Infrastructure** | Docker · Linux · Caddy · nginx |
-| 🎲 **Currently exploring** | Foundry VTT · D&D tooling |
+| 🗺️ **Sniffing out spatial data** | PostgreSQL · PostGIS · QGIS |
+| ⚡ **Chewing on code** | TypeScript · React · Node.js |
+| 🏠 **Building the den** | Docker · Linux · Caddy · nginx |
+| 🎲 **Currently chasing** | Foundry VTT · D&D tooling |
 
-<br>
+<img src="./assets/divider.svg" width="100%" />
 
-## `> toolbox`
+## `> ls ~/toybox`
 
 <div align="center">
 
-### Development
+**Development**
 
 <img src="https://skillicons.dev/icons?i=ts,js,react,nodejs,express,html,css&theme=dark" />
 
-### Data & Infrastructure
+**Data & Infrastructure**
 
 <img src="https://skillicons.dev/icons?i=postgres,docker,linux,git,github,nginx,raspberrypi&theme=dark" />
 
 </div>
 
-<br>
+<img src="./assets/divider.svg" width="100%" />
 
-## `> open_source`
+## `> dig --projects`
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 🔄 PropSync
+### 🔄 [PropSync](https://github.com/ragnaykja/propsync)
 
-Property synchronization tooling for **Obsidian**.
+Property synchronization for **Obsidian**.
+Group your notes, define shared fields once – missing properties get added automatically, nothing gets overwritten.
 
-Built to make keeping properties in sync a problem you only have to solve once.
+<sub>🦴 TypeScript</sub>
 
 </td>
 <td width="50%" valign="top">
 
-### ⚔️ Better Combat Cards
+### ⚔️ [Better Combat Cards](https://github.com/ragnaykja/foundry-better-combat-cards)
 
-A **Foundry VTT** module focused on improving the presentation and usability of combat.
+A **Foundry VTT** module that makes combat chat cards prettier and easier to read.
+
+<sub>🦴 JavaScript</sub>
 
 </td>
 </tr>
-
 <tr>
 <td width="50%" valign="top">
 
-### 👁️ Hide Group Bars
+### 👁️ [Hide Group Bars](https://github.com/ragnaykja/foundry-hide-groupbars)
 
-A small **Foundry VTT** module with one job:
+A tiny **Foundry VTT** module with one job:
+hide the stuff you don't need.
 
-Hide the stuff you don't need.
+<sub>🦴 JavaScript</sub>
 
 </td>
 <td width="50%" valign="top">
 
-### 🌦️ Easy Weather
+### 🌦️ [Easy Weather](https://github.com/ragnaykja/foundry-esay-weather)
 
 Weather tooling for **Foundry VTT**.
+Because even imaginary worlds need a forecast – and someone has to know when it's too rainy for walkies.
 
-Because apparently even imaginary worlds need weather forecasts.
+<sub>🦴 JavaScript</sub>
 
 </td>
 </tr>
 </table>
 
-<br>
+<img src="./assets/divider.svg" width="100%" />
 
-## `> philosophy`
+## `> cat philosophy.txt`
 
 > **If I have to do it twice, I'm probably going to automate it.**
-
-<br>
+> *Then I'll go watch the northern lights.* 🌌
 
 <div align="center">
 
-### 🐺
-
-*Build things. Break things. Learn why they broke.*
-
 <br>
 
-<img src="https://komarev.com/ghpvc/?username=ragnaykja&style=flat-square&label=PROFILE+VIEWS" />
+<img src="https://streak-stats.demolab.com?user=ragnaykja&background=0B1330&border=8B5CF6&ring=2DD4BF&fire=3DDC97&currStreakNum=F1F5FF&sideNums=F1F5FF&currStreakLabel=7DFCC6&sideLabels=C7D2FE&dates=94A3C8&stroke=8B5CF6&hide_border=false&border_radius=16" alt="GitHub streak" />
+
+<br><br>
+
+<img src="https://komarev.com/ghpvc/?username=ragnaykja&style=for-the-badge&color=8b5cf6&label=SNOOTS+BOOPED" />
 
 </div>
+
+<img src="./assets/footer.svg" alt="thanks for sniffing around" width="100%" />
