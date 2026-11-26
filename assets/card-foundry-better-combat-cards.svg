@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 590 210" width="590" height="210" role="img" aria-label="Better Combat Cards"><defs><linearGradient id="ag" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#7dfcc6"/><stop offset=".35" stop-color="#2dd4bf"/>
+<stop offset=".7" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient><linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1128"/><stop offset="1" stop-color="#050816"/></linearGradient>
+<radialGradient id="gl" cx="1" cy="0" r=".9"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".25"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></radialGradient>
+<linearGradient id="ib" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7dfcc6" stop-opacity=".14"/><stop offset="1" stop-color="#8b5cf6" stop-opacity=".14"/></linearGradient></defs><style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,"JetBrains Mono",Menlo,Consolas,monospace}
+.s{fill:#e8f0ff;animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.95}50%{opacity:.25}}
+.a1{animation:d1 16s ease-in-out infinite}.a2{animation:d2 20s ease-in-out infinite}.a3{animation:d1 24s ease-in-out infinite reverse}
+@keyframes d1{0%,100%{transform:translateX(0) skewX(0)}50%{transform:translateX(-80px) skewX(-8deg)}}
+@keyframes d2{0%,100%{transform:translateX(0)}50%{transform:translateX(90px)}}
+.cur{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+.sh{animation:sh 6s ease-in-out infinite}@keyframes sh{0%,100%{stroke-opacity:.35}50%{stroke-opacity:.8}}</style><rect x="1" y="1" width="588" height="208" rx="20" fill="url(#card)"/>
+<rect x="1" y="1" width="588" height="208" rx="20" fill="url(#gl)"/>
+<rect class="sh" x="1" y="1" width="588" height="208" rx="20" fill="none" stroke="url(#ag)" stroke-width="1.5"/>
+<rect x="30" y="28" width="56" height="56" rx="16" fill="url(#ib)" stroke="#ffffff" stroke-opacity=".08"/>
+<g transform="translate(58 56)"><g fill="none" stroke="url(#ag)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M-15 -15 L8 8 L12 4 L-11 -19 Z"/><path d="M4 14 L14 4"/><path d="M10 10 L17 17"/><path d="M15 -15 L-8 8"/><path d="M-4 14 L-14 4"/><path d="M-10 10 L-17 17"/></g></g>
+<text x="104" y="54" font-size="26" font-weight="700" fill="#eef2ff">Better Combat Cards</text>
+<text x="105" y="78" font-size="14" class="mono" fill="#7dfcc6">foundry vtt module</text>
+<text x="556" y="54" text-anchor="end" font-size="22" fill="#6b7a9c">↗</text>
+<text x="34" y="122" font-size="17" fill="#a5b4d4">Cleaner, prettier and more readable combat</text><text x="34" y="148" font-size="17" fill="#a5b4d4">chat cards for Foundry VTT.</text>
+<circle cx="40" cy="180" r="6" fill="#f1e05a"/>
+<text x="54" y="185" font-size="14" fill="#6b7a9c">JavaScript</text>
+<text x="556" y="185" text-anchor="end" font-size="14" class="mono" fill="#6b7a9c">ragnaykja/foundry-better-combat-cards</text></svg>

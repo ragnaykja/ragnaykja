@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 70" width="1200" height="70" role="img" aria-label="03 toolbox"><defs><linearGradient id="ag" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#7dfcc6"/><stop offset=".35" stop-color="#2dd4bf"/>
+<stop offset=".7" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient><linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#7dfcc6" stop-opacity=".8"/>
+<stop offset=".5" stop-color="#8b5cf6" stop-opacity=".35"/><stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/></linearGradient></defs><style>text{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}.mono{font-family:ui-monospace,SFMono-Regular,"JetBrains Mono",Menlo,Consolas,monospace}
+.s{fill:#e8f0ff;animation:tw 3s ease-in-out infinite}
+@keyframes tw{0%,100%{opacity:.95}50%{opacity:.25}}
+.a1{animation:d1 16s ease-in-out infinite}.a2{animation:d2 20s ease-in-out infinite}.a3{animation:d1 24s ease-in-out infinite reverse}
+@keyframes d1{0%,100%{transform:translateX(0) skewX(0)}50%{transform:translateX(-80px) skewX(-8deg)}}
+@keyframes d2{0%,100%{transform:translateX(0)}50%{transform:translateX(90px)}}
+.cur{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}
+</style><text x="2" y="44" font-size="15" class="mono" fill="#7dfcc6">03</text>
+<text x="40" y="46" font-size="30" font-weight="700" fill="url(#ag)">toolbox</text>
+<text x="189" y="45" font-size="15" class="mono" fill="#6b7a9c">// what I hunt with</text>
+<rect x="2" y="62" width="1196" height="2" rx="1" fill="url(#fade)"/></svg>
